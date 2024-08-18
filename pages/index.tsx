@@ -5,6 +5,7 @@ import utilStyle from "../styles/utils.module.css";
 import React, {useState} from 'react'; 
 import ModalLogin from "../components/ModalLogin";
 import ModalSignUp from '../components/ModalSignUp';
+import Link from "next/link";
 
 
 
@@ -35,7 +36,7 @@ export default function Home() {
       
       <p className={utilStyle.headingMessage}>本のリストやグッズの記録など、自由に使ってください。</p>
     </section>
-    <a href="/" className={utilStyle.caution}>※ 著作権など二次創作を扱うことについての注意事項 ※</a>
+    {/* <Link href="/" className={utilStyle.caution}>※ 著作権など二次創作を扱うことについての注意事項 ※</Link> */}
 <div className={boxStyles.btnPosition}>
 
 
