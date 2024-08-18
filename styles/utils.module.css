@@ -1,0 +1,28 @@
+.headingTitle{
+  text-align: center;
+
+  text-shadow: 3px 3px 0 #c86868
+
+}
+
+.headingMessage {
+  text-align: center;
+}
+
+.boxFontSmall {
+  font-size: 0.8rem;
+}
+
+.caution {
+  display: block;
+  text-align: center;
+  margin: auto;
+  font-size: 0.8rem;
+  color:blueviolet;
+}
+
+.topH2 {
+  text-align: center;
+  color: azure;
+  text-shadow: -2px -2px 3px #c86868;
+}

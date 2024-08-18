@@ -1,0 +1,26 @@
+.dialog {
+  width: 80%;
+  max-width: 700px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background: lightsteelblue;
+}
+
+
+.dialogContent {
+  position: relative;
+}
+
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+

@@ -1,0 +1,10 @@
+.grid {
+
+  margin: auto;
+  text-align: center;
+  display: grid;
+  flex-direction: column;
+  width: 60%;
+  height: auto;
+
+}

@@ -1,0 +1,71 @@
+.container {
+  padding: 10px 10px;
+    background-color: #edb4b9;
+    color:  #fbf5f5;
+    font:bold;
+    font-size: 1.2rem;
+    align-items: center;
+  }
+  
+  .box6 {
+    background-color: #fff;
+    background-size: 8px 100%,100% 2em;
+    line-height: 2;
+    border: solid 2px #ee8992;
+    padding: 22px 8px 22px 8px;
+    color: #ee8992;
+    margin: 1em 0;
+    font-weight: bold;
+  }
+  .box6Title {
+    font-size: 1.2em;
+    background: #ea9ca2;
+    padding: 0.6em;
+    margin: -22px -8px 22px -8px;
+    text-align: center;
+    color: #FFF;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+  }
+  .box6 p {
+    text-align: left;
+    padding: 0;
+    margin: 0;
+  }
+  
+  
+  
+  .buttonSet {
+    text-align: right;
+    margin-right: 10px;
+  }
+  
+  .buttonDelete {
+    margin-right: 10px; 
+  }
+  
+  
+  .topBtn {
+    background-color: #fbf5f5;
+    color: #ee8992;
+    border:#ee8992 double 3px;
+    padding:4px 12px;
+    margin: 30px;
+  }
+  
+  .btnPosition {
+    text-align: center;
+    margin: 8px;
+  }
+  
+  .topBtn:hover {
+    color: #fbf5f5;
+    border-color: #fbf5f5 ;
+    background-color: #ee8992;
+  }
+  
+  .btnLogin:hover {
+    background-color: #fbf5f5;
+    border-color: #ee8992 ;
+    color: #ee8992;
+  }
