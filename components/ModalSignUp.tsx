@@ -15,7 +15,14 @@ const ModalSignUp:React.FC<ModalSignUpProps> =
     const [username, setUsername] = useState<string>(""); 
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
+    const [successMessage, setSuccessMessage] = useState<string | null>(null);
     const router =useRouter();
+
+    const resetForm = () =>{
+      setUsername("");
+      setEmail("");
+      setPassword("");
+    };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
@@ -29,6 +36,15 @@ const ModalSignUp:React.FC<ModalSignUpProps> =
 
        
        router.push("/");
+
+       setSuccessMessage("新規登録が成功しました。");
+        resetForm();
+
+       setTimeout(() => {
+        setSuccessMessage(null);
+        onClose();
+      }, 1800);
+
        
        } catch(err) {
          alert("入力内容が正しくありません。");

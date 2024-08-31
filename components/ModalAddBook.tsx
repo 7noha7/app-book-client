@@ -22,6 +22,7 @@ const ModalAddBook:React.FC<ModalAddBookProps> =
     const [bookauthor, setBookAuthor] = useState<string>("");
     const [genru, setGenre] = useState(3);
     const [content, setContent] = useState<string>("");
+    const [successMessage, setSuccessMessage] = useState<string | null>(null);
     const {user} = useAuth();
     const router =useRouter();
 
@@ -35,6 +36,14 @@ useEffect(() => {
   }
 },[initialData]);
 
+const resetForm = () =>{
+  setBookTitle("");
+    setBookAuthor("");
+    setGenre("");
+    setContent("");
+
+}
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
     
@@ -47,18 +56,29 @@ useEffect(() => {
             content,
         });
         onBookSaved(response.data.updateBook);
-      }else{
-           const response =  await apiClient.post("/library/book",{
-            booktitle,
-            bookauthor,
-            genru,
-            content,
-            userId: user?.id,
-          });
 
+        
+      }else{
+        const response =  await apiClient.post("/library/book",{
+          booktitle,
+          bookauthor,
+          genru,
+          content,
+          userId: user?.id,
+        });
+        
         onBookSaved(response.data.newBook);
-        }
-        onClose();
+      }
+
+        setSuccessMessage(editMode ? "リストを編集しました。" : "リストを追加しました。");
+
+        resetForm();
+
+        setTimeout(() => {
+          setSuccessMessage(null);
+          onClose();
+        }, 1800);
+        
        
        } catch(err) {
         console.error("入力内容が正しくありません",err);
@@ -71,9 +91,13 @@ useEffect(() => {
 
     <Modal open ={open}
     onClose= {onClose}>
+      {successMessage ? (
+        <div><p>{successMessage}</p></div>
+      ):(
     <form onSubmit={handleSubmit}>
     <div>
         <p>{editMode ? "リストを編集する" : "リストを追加する"}</p>
+        {successMessage && <div className="success-message">{successMessage}</div>}
         <div>
           <label htmlFor="booktitle">タイトル：</label>
           <input type ="text" id="booktitle" name="title" value={booktitle}
@@ -104,6 +128,7 @@ useEffect(() => {
           <button type="submit">{editMode ? "編集する":"登録する"}</button>
      </div>
   </form>
+  )}
 </Modal>
 
 
