@@ -39,7 +39,7 @@ useEffect(() => {
 const resetForm = () =>{
   setBookTitle("");
     setBookAuthor("");
-    setGenre("");
+    setGenre(3);
     setContent("");
 
 }
