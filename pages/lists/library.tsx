@@ -10,14 +10,19 @@ import { BookList } from "@/src/types";
 import apiClient from "@/src/lib/apiClient";
 // import { useRouter } from "next/router";
 import { useAuth } from "@/src/context/userAuth";
+import ModalLeave from "@/components/ModalLeave";
+import { useRouter } from "next/router";
+
 
 
 export default function LibraryList() {
   
   const {user, logout} =useAuth();
+  const router = useRouter();
 
   const [ isModalSetOpen, setIsModalSetOpen] = useState(false);
   const [myLibrary, setMyLibrary] = useState<BookList[]>([]);
+  const [ isModalLeaveOpen,setIsModalLeaveOpen] = useState(false);
   const [editingBook, setEditingBook] = useState<BookList | null>(null);
 
   const handleOpenModalSet = () => {
@@ -27,6 +32,7 @@ export default function LibraryList() {
     setIsModalSetOpen(false);
     setEditingBook(null);
   };
+
 
   const handleBookAdded = (newBook: BookList) => {
 
@@ -50,7 +56,17 @@ const handleBookEdit = (book: BookList) => {
   setIsModalSetOpen(true);
 };
 
-
+const handleLeave = async()=>{
+  try {
+    await apiClient.delete('/api/leave');
+    logout();
+    alert('アカウントが削除されました。');
+    router.push('/');
+  }catch(err){
+    console.error('退会エラー：', err);
+    alert('退会に失敗しました。')
+  }
+};
  
   
   useEffect(() =>{
@@ -93,6 +109,11 @@ if(user){
       initialData={editingBook || undefined}/>
        
 <Link href="/"><button className={boxStyles.topBtn} onClick ={logout}>ログアウト</button></Link>
+<button onClick={()=> setIsModalLeaveOpen(true)} className={boxStyles.topBtn}>退会する</button>
+<ModalLeave
+open ={isModalLeaveOpen}
+onClose={()=> setIsModalLeaveOpen(false)}
+onConfirm ={handleLeave}/>
 </div>
 
 {Array.isArray(myLibrary) && myLibrary.map((book: BookList) => (
