@@ -8,10 +8,10 @@ import utilStyle from "../../styles/utils.module.css";
 import Book from "@/components/Book";
 import { BookList } from "@/src/types";
 import apiClient from "@/src/lib/apiClient";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useAuth } from "@/src/context/userAuth";
 import ModalLeave from "@/components/ModalLeave";
-import { useRouter } from "next/router";
+
 
 
 
@@ -58,7 +58,7 @@ const handleBookEdit = (book: BookList) => {
 
 const handleLeave = async()=>{
   try {
-    await apiClient.delete('/api/leave');
+    await apiClient.delete('/leave');
     logout();
     alert('アカウントが削除されました。');
     router.push('/');
